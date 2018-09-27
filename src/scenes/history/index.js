@@ -13,10 +13,13 @@ type Props = {
 class History extends React.PureComponent<Props> {
   render() {
     const { history = [] } = this.props;
+    const data = history.reverse();
+    const keyExtractor = (item) => `${item.timestamp}`;
     return (
       <FlatList
         style={css.flatList}
-        data={history}
+        data={data}
+        keyExtractor={keyExtractor}
         renderItem={({item}) => (
           <View style={css.container}>
             <Text style={css.child}>{`${item.temperature} °C`}</Text>
